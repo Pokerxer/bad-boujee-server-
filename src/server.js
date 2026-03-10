@@ -13,7 +13,11 @@ const paymentRoutes = require('./routes/payments');
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
+  origin: [
+    'http://localhost:3000', 
+    'http://127.0.0.1:3000',
+    'https://bad-boujee.vercel.app'
+  ],
   credentials: true,
 }));
 
@@ -30,6 +34,23 @@ app.use('/api/payments', paymentRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Ball & Boujee API is running' });
+});
+
+app.get('/', (req, res) => {
+  res.json({ 
+    name: 'Ball & Boujee API', 
+    version: '1.0.0',
+    status: 'running',
+    endpoints: [
+      '/api/products',
+      '/api/auth',
+      '/api/orders',
+      '/api/events',
+      '/api/newsletter',
+      '/api/payments',
+      '/api/health'
+    ]
+  });
 });
 
 app.use((err, req, res, next) => {
