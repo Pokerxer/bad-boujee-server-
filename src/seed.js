@@ -1,9 +1,9 @@
 require('dotenv').config({ path: './.env' });
 const mongoose = require('mongoose');
-const config = require('./src/config');
-const Product = require('./src/models/Product');
-const Event = require('./src/models/Event');
-const Newsletter = require('./src/models/Newsletter');
+const config = require('./config');
+const Product = require('./models/Product');
+const Event = require('./models/Event');
+const Newsletter = require('./models/Newsletter');
 
 const products = [
   {
